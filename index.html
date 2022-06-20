@@ -1,6 +1,5 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>Reçete Yazdır</title>
 <link rel="stylesheet" href="card.css">
 <style>
 @page {
@@ -77,16 +76,61 @@ textarea {
   width: 90%;
   border: 0;
   font-size: 14px; 
+  height: auto;
 }
 
 ol,li{
     margin:0;
 }
 
-li input{
-    padding: 2px 0 !important;
+li textarea{
+    padding-top: 3px;
+    margin-bottom: 7px;
+    vertical-align: top;
+
 }
 </style>
+
+<script type="text/javascript">
+    var list;
+    function bindKeys(el){
+        var t = el.querySelector('textarea')
+        t.addEventListener("keydown", (event)=> {
+            if (event.keyCode == 8) { 
+                if(event.target.value.length==0 && list.querySelectorAll('li').length>1){
+                    event.preventDefault();
+                    event.target.parentNode.parentNode.removeChild(event.target.parentNode)
+                    var tt = list.lastElementChild.querySelector('textarea')
+                    tt.focus()
+                }
+                return
+            }
+            
+            if (event.keyCode === 9 && !event.shiftKey) {
+                if(el == el.parentNode.lastElementChild){
+                    event.preventDefault();
+                    var c = el.cloneNode(true) 
+                    c.querySelector('textarea').value=''
+                    el.parentNode.appendChild(c)
+                    el.removeAttribute('id')
+                    c.querySelector('textarea').focus()
+                    el.setAttribute('id','first')
+                    bindKeys(c)
+                }
+            }
+           
+        });
+
+        
+    }
+    window.addEventListener('load',function(){
+        list = document.getElementById('list');
+        var el = document.getElementById('first');
+        if(el){
+           bindKeys(el)
+        }
+    })
+</script>
 <body>
     <div class="title">Reçete</div>
     <table>
@@ -106,28 +150,9 @@ li input{
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;"><b style="margin-top:10px; display: block;">İlaçlar</b><br/><br/>
-            <ol style="text-align: left;">
-                <li>
-                    <input type="text" style="width:90%"/>
-                </li>
-                <li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
-                </li><li>
-                    <input type="text" style="width:90%"/>
+            <ol style="text-align: left;" id="list">
+                <li id="first">
+                    <textarea cols="2"></textarea>
                 </li>
             </ol></td>
         </tr>
