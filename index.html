@@ -1,0 +1,136 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Reçete Yazdır</title>
+<link rel="stylesheet" href="card.css">
+<style>
+@page {
+    /* dimensions for the whole page */
+    size: A5;    
+    margin: 0;
+}
+
+html {
+    /* off-white, so body edge is visible in browser */
+    background: #eee;
+}
+
+body {
+    /* A5 dimensions */
+    height: 210mm;
+    width: 148.5mm;
+    margin: 0 auto;
+    background-color: #fff;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/* fill half the height with each face */
+table {
+    height: 90%;
+    width: 92%;
+    margin-left: 4%;
+    border-collapse: collapse;
+
+}
+
+table, th, td {
+    border: 2px solid #000;
+    vertical-align: top;
+}
+
+td{
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.row-1{
+    height: 75px;
+}
+.row-2{
+    height: 50px;
+    vertical-align: top;
+}
+
+.row-1 td,.row-2 td{
+    width: 50%;
+}
+
+.title{
+    margin-left: 4%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+input[type=text]{
+    padding-left: 2%;
+    font-size: 14px;
+    border: 0;
+    line-height: 150%;
+}
+
+.row-2 *{
+    vertical-align: top;
+}
+textarea {
+  resize: none;
+  width: 90%;
+  border: 0;
+  font-size: 14px; 
+}
+
+ol,li{
+    margin:0;
+}
+
+li input{
+    padding: 2px 0 !important;
+}
+</style>
+<body>
+    <div class="title">Reçete</div>
+    <table>
+        <tr class="row-1">
+            <td>Hastanın Adı Soyadı:<br/>
+            <input type="text" style="margin-top: 5px; width:90%;"/></td>
+            <td>Tarih:  <input type="text" style=""/><br/><br/> Protokol No: <input type="text" style=""/></td>
+        </tr>
+        <tr class="row-1">
+            <td>TC Kimlik No: <input type="text" style="margin-top: 5px; width:90%;"/></td>
+            <td>Dr. Adı Soyadı: <input type="text" style="width:90%"/><br/> Dr. Dip. No: <input type="text" style="width:110px"/> Kaşe</td>
+        </tr>
+        <tr class="row-2">
+            <td colspan="2" style="vertical-align: top;">
+                Tanı: <textarea cols="2"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;"><b style="margin-top:10px; display: block;">İlaçlar</b><br/><br/>
+            <ol style="text-align: left;">
+                <li>
+                    <input type="text" style="width:90%"/>
+                </li>
+                <li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li><li>
+                    <input type="text" style="width:90%"/>
+                </li>
+            </ol></td>
+        </tr>
+    </table>
+    
+</body>
